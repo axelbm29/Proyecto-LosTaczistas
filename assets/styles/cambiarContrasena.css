@@ -7,16 +7,13 @@ body {
     max-width: 400px;
     margin: 10vh auto;
     background-color: #4e5b92;
-    height: 60vh;
+    height: 65vh;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 50px;
-  }
-  img {
-    margin-bottom: 50px;
   }
   .title,
   .subtitle {
@@ -30,13 +27,12 @@ body {
     font-size: 25px;
     font-weight: 200;
     font-style: italic;
-    margin-bottom: 40px;
   }
   .formulario {
     text-align: center;
   }
   input {
-    width: 350px;
+    width: 300px;
     padding: 15px;
   }
   
@@ -48,9 +44,10 @@ body {
   .btn-next {
     font-size: 18px;
     border: 1px solid #fff;
+    margin-bottom: 25px;
   }
   .btn-next:hover {
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid #ffffff;
     color: #fff;
-  }z
+  }
