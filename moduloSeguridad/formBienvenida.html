@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+        <html lang="en">
+
+        <head>
+            <title>Ranchito Sur | Página Principal</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="stylesheet" href="../assets/styles/main.css">
+            <link rel="shortcut icon" href="../assets/images/bandeja.png" type="image/x-icon">
+        </head>
+
+        <body class="is-preload">
+            <div id="page-wrapper">
+                <section id="banner">
+                    <div class="inner">
+                        <div class="logo"><img src="../assets/images/iconoPanel.png" alt="" width=200></div>
+                    </div>
+                    <div class="inner">
+                        <h2>BIENVENIDO (A)</h2>
+                        <p><?php echo $_SESSION['nombreUsuario'] ?> </p>
+                    </div>
+                </section>
+                <section id="wrapper">
+                    <section id="one" class="wrapper spotlight style1">
+                        <div class="inner">
+                            <section class="features">
+                                <?php
+                                foreach ($privilegios as $privilegio) {
+                                    $buttonPrivilegio = $privilegio['button_priv'];
+                                    $labelPrivilegio = $privilegio['label_priv'];
+                                    $descPrivilegio = $privilegio['desc_priv'];
+                                    $pathPrivilegio = $privilegio['path_priv'];
+                                ?>
+                                    <article>
+                                        <a href="#" class="image"></a>
+                                        <h3 class="major"><?php echo $labelPrivilegio ?></h3>
+                                        <p><?php echo $descPrivilegio ?></p>
+                                        <form action="<?php echo $pathPrivilegio ?>" method="POST">
+                                            <input type="hidden" value="<?php echo $buttonPrivilegio ?>">
+                                            <input class="special" type="submit" name="<?php echo $buttonPrivilegio ?>" value="Ingresar">
+                                        </form>
+                                    </article>
+                                <?php
+
+                                }
+                                ?>
+                            </section>
+                        </div>
+                    </section>
+                </section>
+        </body>
+
+        </html>

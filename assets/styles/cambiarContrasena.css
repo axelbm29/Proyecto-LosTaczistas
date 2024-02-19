@@ -40,6 +40,9 @@ body {
     text-align: left !important;
   }
   
+  a {
+    color: bisque;
+  }
   
   .btn-next {
     font-size: 18px;
