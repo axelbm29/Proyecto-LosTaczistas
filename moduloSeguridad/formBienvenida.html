@@ -1,53 +1,127 @@
-<!DOCTYPE HTML>
-        <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Escuela de Baile Rits | Página Principal</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../assets/styles/main.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
 
-        <head>
-            <title>Ranchito Sur | Página Principal</title>
-            <meta charset="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="stylesheet" href="../assets/styles/main.css">
-            <link rel="shortcut icon" href="../assets/images/bandeja.png" type="image/x-icon">
-        </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <img
+          style="margin-left: 25px"
+          src="../assets/images/logo.png"
+          alt="Logo"
+        />
+        <h1 style="text-align: center">Escuela de Baile Rits</h1>
+        <hr />
+        <ul>
+          <li>
+            <a href="#" onclick="mostrarBienvenida(this)" class="active"
+              ><i class="fas fa-home"></i> Inicio
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="mostrarContenido('gestionar-usuarios', this)"
+              ><i class="fas fa-users"></i> Gestionar Usuarios</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="mostrarContenido('registrar-pagos', this)"
+              ><i class="fas fa-money-bill"></i> Registrar Pagos</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="mostrarContenido('gestionar-horarios', this)"
+              ><i class="far fa-clock"></i> Gestionar Horarios</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="mostrarContenido('gestionar-alumnos', this)"
+              ><i class="fas fa-user-graduate"></i> Gestionar Alumnos</a
+            >
+          </li>
+          <li>
+            <a href="#" onclick="mostrarContenido('registrar-asistencia', this)"
+              ><i class="far fa-calendar-check"></i> Registrar Asistencia</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="main-content">
+        <div class="welcome-message" style="margin-top: 70px">
+          <h2>Bienvenido!!!!</h2>
+          <p>Hola [nombre de usuario], bienvenido al panel princiapl</p>
+        </div>
+        <!-- Contenido temporal para cada opción -->
+        <div id="gestionar-usuarios" style="display: none; margin-top: 70px">
+          <h2>Gestionar Usuarios</h2>
+          <p>Contenido temporal para este UC</p>
+        </div>
+        <div id="registrar-pagos" style="display: none; margin-top: 70px">
+          <h2>Registrar Pagos</h2>
+          <p>Contenido temporal para este UC</p>
+        </div>
+        <div id="gestionar-horarios" style="display: none; margin-top: 70px">
+          <h2>Gestionar Horarios</h2>
+          <p>Contenido temporal para este UC</p>
+        </div>
+        <div id="gestionar-alumnos" style="display: none; margin-top: 70px">
+          <h2>Gestionar Alumnos</h2>
+          <p>Contenido temporal para este UC</p>
+        </div>
+        <div id="registrar-asistencia" style="display: none; margin-top: 70px">
+          <h2>Registrar Asistencia</h2>
+          <p>Contenido temporal para este UC</p>
+        </div>
+      </div>
+      <div class="user-info">
+        <img src="../assets/images/profile_photo.png" alt="Foto de Perfil" />
+        <span>Nombre de Usuario</span>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        mostrarBienvenida(document.querySelector(".sidebar a"));
+      });
 
-        <body class="is-preload">
-            <div id="page-wrapper">
-                <section id="banner">
-                    <div class="inner">
-                        <div class="logo"><img src="../assets/images/iconoPanel.png" alt="" width=200></div>
-                    </div>
-                    <div class="inner">
-                        <h2>BIENVENIDO (A)</h2>
-                        <p><?php echo $_SESSION['nombreUsuario'] ?> </p>
-                    </div>
-                </section>
-                <section id="wrapper">
-                    <section id="one" class="wrapper spotlight style1">
-                        <div class="inner">
-                            <section class="features">
-                                <?php
-                                foreach ($privilegios as $privilegio) {
-                                    $buttonPrivilegio = $privilegio['button_priv'];
-                                    $labelPrivilegio = $privilegio['label_priv'];
-                                    $descPrivilegio = $privilegio['desc_priv'];
-                                    $pathPrivilegio = $privilegio['path_priv'];
-                                ?>
-                                    <article>
-                                        <a href="#" class="image"></a>
-                                        <h3 class="major"><?php echo $labelPrivilegio ?></h3>
-                                        <p><?php echo $descPrivilegio ?></p>
-                                        <form action="<?php echo $pathPrivilegio ?>" method="POST">
-                                            <input type="hidden" value="<?php echo $buttonPrivilegio ?>">
-                                            <input class="special" type="submit" name="<?php echo $buttonPrivilegio ?>" value="Ingresar">
-                                        </form>
-                                    </article>
-                                <?php
+      function mostrarBienvenida(elemento) {
+        document
+          .querySelectorAll(".main-content > div")
+          .forEach(function (contenido) {
+            contenido.style.display = "none";
+          });
+        document.querySelectorAll(".sidebar a").forEach(function (enlace) {
+          enlace.classList.remove("active");
+        });
+        document.querySelector(".welcome-message").style.display = "block";
+        elemento.classList.add("active");
+      }
 
-                                }
-                                ?>
-                            </section>
-                        </div>
-                    </section>
-                </section>
-        </body>
-
-        </html>
+      function mostrarContenido(id, elemento) {
+        document.querySelector(".welcome-message").style.display = "none";
+        document
+          .querySelectorAll(".main-content > div")
+          .forEach(function (contenido) {
+            contenido.style.display = "none";
+          });
+        document.querySelectorAll(".sidebar a").forEach(function (enlace) {
+          enlace.classList.remove("active");
+        });
+        document.getElementById(id).style.display = "block";
+        elemento.classList.add("active");
+      }
+    </script>
+  </body>
+</html>
